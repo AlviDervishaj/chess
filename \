@@ -1,0 +1,23 @@
+import { darkColor, files, lightColor, ranks } from "../../constants";
+export function DrawBoard() {
+  const board = [];
+
+  for (let file = files.length - 1; file >= 0; file--) {
+    for (let rank = 0; rank < ranks.length; rank++) {
+      // Make every other square light;
+      const isLightSquare: boolean = (file + rank) % 2 !== 0;
+      const squareColor: string = isLightSquare ? lightColor : darkColor;
+      const position: Array<string> = [files[file], ranks[rank]];
+      board.push(<div className="p-4 w-32 h-32" style={{backgroundColor: squareColor}} key={`${position}`}>{position}</div>);
+    }
+  }
+
+
+  return (
+    <div className="w-fit h-fit mx-auto self-center justify-self-center p-4 grid grid-cols-8 grid-rows-8 place-items-center">
+      {board}
+    </div>
+  );
+
+}
+
