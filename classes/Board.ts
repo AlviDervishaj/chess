@@ -1,4 +1,4 @@
-import { lightColor, darkColor, files, ranks, isUpperCase, isNumeric } from "../constants";
+import { lightColor, darkColor, files, ranks, isUpperCase, isNumeric, STARTINGFEN } from "../constants";
 import PTS, { PieceENUM } from "../constants/pts";
 import { Piece } from "./Piece";
 import { Square } from "./Square";
@@ -10,8 +10,9 @@ export class Board {
   constructor() {
     this.squares = [];
     this.positionFEN = "";
-    this.initialPositionFEN = "" as const;
+    this.initialPositionFEN = STARTINGFEN;
     this.drawBoard();
+    this.mapFENToPosition(this.initialPositionFEN);
   }
 
   drawBoard() {
